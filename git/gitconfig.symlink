@@ -1,0 +1,9 @@
+[user]
+    name = Michael Ehrenreich
+    email = michael.ehrenreich@mailbox.org
+
+[alias]
+    ci = commit
+    br = branch
+    co = checkout
+    sw = switch
