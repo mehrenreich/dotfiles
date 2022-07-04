@@ -6,6 +6,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'hashivim/vim-terraform'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plugin 'tomtom/tcomment_vim' 
 call vundle#end()
 filetype plugin indent on
 
@@ -15,9 +17,22 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
+let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+let g:gitgutter_enabled=1
 
-set ts=4
-set sw=4
+set backspace=2
+set cursorline
 set expandtab
+set modelines=1
+set number
+set number
+set shiftwidth=4
 set smarttab
+set tabstop=4
+set updatetime=100
+
+nnoremap // :TComment<CR>
+vnoremap // :TComment<CR>
+
+syntax on
