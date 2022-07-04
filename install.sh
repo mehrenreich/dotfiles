@@ -13,7 +13,17 @@ function execute_postinstall_scripts () {
 function create_symlinks () {
 	for symlink in $(find $THIS_DIR -name "*.symlink") ; do
 		basename=$(basename $symlink)
-		ln -vsf $symlink $HOME/.${basename/\.symlink/}
+        if [[ $basename =~ ^__ ]] ; then
+            path=$(echo $basename | sed s%__%/%g | sed s%^/%%)
+            path="$HOME/.${path/\.symlink/}"
+            dirname=$(dirname $path)
+            if [[ ! -d $dirname ]] ; then
+                mkdir -vp $dirname
+            fi
+            ln -vsf $symlink $path
+        else
+            ln -vsf $symlink $HOME/.${basename/\.symlink/}
+        fi
 	done
 }
 
