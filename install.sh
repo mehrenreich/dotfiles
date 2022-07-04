@@ -3,15 +3,30 @@
 THIS_DIR=$(cd `dirname $0`; pwd -P)
 
 function execute_preinstall_scripts () {
-	find $THIS_DIR -name "*.preinstall" -exec bash {} \;
+    if [[ ! -z $1 ]] ; then
+        path=$THIS_DIR/$1
+    else
+        path=$THIS_DIR
+    fi
+    find $path -name "*.preinstall" -exec bash {} \;
 }
 
 function execute_postinstall_scripts () {
-	find $THIS_DIR -name "*.postinstall" -exec bash {} \;
+    if [[ ! -z $1 ]] ; then
+        path=$THIS_DIR/$1
+    else
+        path=$THIS_DIR
+    fi
+	find $path -name "*.postinstall" -exec bash {} \;
 }
 
 function create_symlinks () {
-	for symlink in $(find $THIS_DIR -name "*.symlink") ; do
+    if [[ ! -z $1 ]] ; then
+        path=$THIS_DIR/$1
+    else
+        path=$THIS_DIR
+    fi
+	for symlink in $(find $path -name "*.symlink") ; do
 		basename=$(basename $symlink)
         if [[ $basename =~ ^__ ]] ; then
             path=$(echo $basename | sed s%__%/%g | sed s%^/%%)
@@ -27,6 +42,8 @@ function create_symlinks () {
 	done
 }
 
-execute_preinstall_scripts
-create_symlinks
-execute_postinstall_scripts
+item=$1
+
+execute_preinstall_scripts $item
+create_symlinks $item
+execute_postinstall_scripts $item
