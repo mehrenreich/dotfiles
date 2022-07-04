@@ -16,3 +16,8 @@ nnoremap <C-f> :NERDTreeFind<CR>
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 let g:terraform_fmt_on_save=1
+
+set ts=4
+set sw=4
+set expandtab
+set smarttab
