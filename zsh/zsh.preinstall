@@ -1,0 +1,37 @@
+#!/bin/bash
+
+OMZ_DIR="${HOME}/.oh-my-zsh"
+
+OMZ_PLUGINS="https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git
+https://github.com/zsh-users/zsh-autosuggestions.git
+https://github.com/zsh-users/zsh-completions.git
+https://github.com/superbrothers/zsh-kubectl-prompt.git
+https://github.com/zsh-users/zsh-syntax-highlighting.git"
+
+OMZ_THEMES="https://github.com/romkatv/powerlevel10k.git"
+
+if [[ ! -d $OMZ_DIR ]] ; then
+    git clone https://github.com/ohmyzsh/ohmyzsh.git $OMZ_DIR
+else
+    $OMZ_DIR/tools/upgrade.sh
+fi
+
+for plugin in $OMZ_PLUGINS ; do
+    name=$(echo $plugin | sed "s#.*/##" | sed "s#.git##")
+    dir="${OMZ_DIR}/custom/plugins/${name}"
+    if [[ -d $dir ]] ; then
+        cd $dir && git pull
+    else
+        git clone $plugin $dir
+    fi
+done
+
+for theme in $OMZ_THEMES ; do
+    name=$(echo $theme | sed "s#.*/##" | sed "s#.git##")
+    dir="${OMZ_DIR}/custom/themes/${name}"
+    if [[ -d $dir ]] ; then
+        cd $dir && git pull
+    else
+        git clone $theme $dir
+    fi
+done
