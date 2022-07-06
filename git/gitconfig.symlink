@@ -1,22 +1,23 @@
 [alias]
-    br = branch
-    ci = commit
-    co = checkout
-    diff-previous = !git diff HEAD^ HEAD
-    dp = diff-previous
-    st = status
-    sw = switch
+	br = branch
+	ci = commit
+	co = checkout
+	diff-previous = !git diff HEAD^ HEAD
+	dp = diff-previous
+	st = status
+	sw = switch
 
 [commit]
-    gpgsign = true
+	gpgsign = true
 
 [gpg]
-    program = gpg
+	program = /usr/bin/gpg
 
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 [user]
-    name = Michael Ehrenreich
-    email = michael.ehrenreich@mailbox.org
+	name = Michael Ehrenreich
+	email = michael.ehrenreich@mailbox.org
+	signingkey = C773F6BD5F4EB01F17834FCEF9901B5148FD447D
 

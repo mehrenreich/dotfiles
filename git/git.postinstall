@@ -1,0 +1,29 @@
+#!/bin/bash
+
+GPG_SIGNING_KEY="C773F6BD5F4EB01F17834FCEF9901B5148FD447D"
+
+function gpg_installed () {
+	which gpg >/dev/null
+	if [[ $? == 0 ]] ; then
+		true
+	else
+		false
+	fi
+}
+
+function gpg_key_available () {
+	gpg -K $GPG_SIGNING_KEY >/dev/null
+	if [[ $? == 0 ]] ; then
+		true
+	else
+		false
+	fi
+}
+
+if `gpg_installed` && `gpg_key_available` ; then
+	git config --global commit.gpgsign true
+	git config --global gpg.program $(which gpg)
+	git config --global user.signingkey $GPG_SIGNING_KEY
+else
+	git config --global commit.gpgsign false
+fi
