@@ -9,13 +9,13 @@
     tree = !git log --oneline --graph --decorate --all
 
 [commit]
-    gpgsign = true
+	gpgsign = true
 
 [gpg]
-    program = gpg
+	program = /usr/bin/gpg
 
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 [user]
     name = Michael Ehrenreich
