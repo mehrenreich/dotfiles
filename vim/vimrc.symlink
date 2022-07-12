@@ -8,6 +8,7 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plugin 'tomtom/tcomment_vim' 
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
 filetype plugin indent on
 
