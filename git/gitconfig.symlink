@@ -6,6 +6,7 @@
     dp = diff-previous
     st = status
     sw = switch
+    tree = !git log --oneline --graph --decorate --all
 
 [commit]
     gpgsign = true
@@ -19,4 +20,4 @@
 [user]
     name = Michael Ehrenreich
     email = michael.ehrenreich@mailbox.org
-
+    signingkey =  993331AABB0E2A4419687AC3D48B4531CFE467DF
