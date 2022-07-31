@@ -9,7 +9,7 @@
     tree = !git log --oneline --graph --decorate --all
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [gpg]
 	program = /usr/bin/gpg
@@ -19,5 +19,5 @@
 
 [user]
     name = Michael Ehrenreich
-    email = michael.ehrenreich@mailbox.org
-    signingkey =  993331AABB0E2A4419687AC3D48B4531CFE467DF
+	email = michael.ehrenreich@mailbox.org
+	signingkey = C773F6BD5F4EB01F17834FCEF9901B5148FD447D
